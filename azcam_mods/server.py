@@ -32,7 +32,7 @@ def setup():
     option = "menu"
     try:
         i = sys.argv.index("-mods")
-        option = "mods"
+        option = "MODS"
     except ValueError:
         pass
 
@@ -187,6 +187,10 @@ def setup():
 
         exptool = Exptool(webserver)
         exptool.initialize()
+
+    # azcammonitor
+    azcam.db.monitor.proc_path = "/azcam/azcam-mods/support/start_server_mods.py"
+    azcam.db.monitor.register()
 
     # GUIs
     if 0:
