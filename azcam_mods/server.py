@@ -181,15 +181,12 @@ def setup():
         webserver.index = os.path.join(azcam.db.systemfolder, "index_MODS.html")
         webserver.port = 2403
         webserver.start()
-
         webstatus = Status(webserver)
         webstatus.initialize()
-
         exptool = Exptool(webserver)
         exptool.initialize()
 
     # azcammonitor
-    azcam.db.monitor.proc_path = "/azcam/azcam-mods/support/start_server_mods.py"
     azcam.db.monitor.register()
 
     # GUIs
