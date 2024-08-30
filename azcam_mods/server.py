@@ -22,9 +22,7 @@ from azcam.tools.archon.exposure_archon import ExposureArchon
 from azcam.tools.archon.tempcon_archon import TempConArchon
 from azcam_mods.detector_mods import detector_mods_test_dewar, detector_mods
 
-from azcam.webtools.webserver import WebServer
-from azcam.webtools.status.status import Status
-from azcam.webtools.exptool.exptool import Exptool
+from azcam.web.webserver_dash import WebServer
 
 
 def setup():
@@ -178,13 +176,8 @@ def setup():
     if 1:
         webserver = WebServer()
         webserver.logcommands = 0
-        webserver.index = os.path.join(azcam.db.systemfolder, "index_MODS.html")
         webserver.port = 2403
         webserver.start()
-        webstatus = Status(webserver)
-        webstatus.initialize()
-        exptool = Exptool(webserver)
-        exptool.initialize()
 
     # azcammonitor
     azcam.db.monitor.register()
