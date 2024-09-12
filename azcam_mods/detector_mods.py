@@ -18,12 +18,6 @@ detector_mods = {
         [4081, 1],
         [8160, 1],
     ],
-    "det_gap": [
-        [0, 0],
-        [0, 0],
-        [0, 0],
-        [0, 0],
-    ],
     "det_position": [
         [1, 1],
         [1, 1],
@@ -64,12 +58,6 @@ detector_mods_test_dewar = {
         [4080, 8160],
         [4081, 8160],
         [8160, 8160],
-    ],
-    "det_gap": [
-        [0, 0],
-        [0, 0],
-        [0, 0],
-        [0, 0],
     ],
     # should change both location
     "det_position": [
