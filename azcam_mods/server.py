@@ -22,7 +22,7 @@ from azcam.tools.archon.exposure_archon import ExposureArchon
 from azcam.tools.archon.tempcon_archon import TempConArchon
 from azcam_mods.detector_mods import detector_mods_test_dewar, detector_mods
 
-from azcam.web.webserver_dash import WebServer
+from azcam.web.webserver_main import WebServer
 
 
 def setup():
