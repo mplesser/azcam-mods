@@ -1,7 +1,7 @@
 """
 Setup method for LBTO MODS azcamserver.
 Usage example:
-  python -i -m azcam_mods.server -- -system archon
+  python -i -m azcam_mods.server -- -system mods
 """
 
 import os
@@ -181,11 +181,6 @@ def setup():
 
     # azcammonitor
     azcam.db.monitor.register()
-
-    # GUIs
-    if 0:
-        if os.name != "posix":
-            import azcam_90prime.start_azcamtool
 
     # finish
     azcam.log("Configuration complete")
