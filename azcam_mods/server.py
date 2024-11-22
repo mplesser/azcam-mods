@@ -14,7 +14,8 @@ import azcam.server
 import azcam.shortcuts
 from azcam.cmdserver import CommandServer
 from azcam.header import System
-from azcam.tools.ds9display import Ds9Display
+
+# from azcam.tools.ds9display import Ds9Display
 from azcam.tools.telescope import Telescope
 from azcam.tools.instrument import Instrument
 from azcam.tools.archon.controller_archon import ControllerArchon
@@ -155,7 +156,7 @@ def setup():
     exposure.fileconverter.set_detector_config(detector_mods)
 
     # display
-    display = Ds9Display()
+    # display = Ds9Display()
 
     # parameter file
     azcam.db.parameters.read_parfile(parfile)
