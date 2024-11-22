@@ -55,6 +55,8 @@ def setup():
 
     # for dev only
     option = "testdewar"
+    azcam.db.verbosity = 2
+    os.environ["AZCAM_DATAROOT"] = "/home/mods/data"
 
     # define folders for system
     azcam.db.systemname = "MODS"
