@@ -90,7 +90,9 @@ def setup():
         cmdport = 2402
 
     elif "testdewar" in option:
-        parfile = os.path.join(azcam.db.datafolder, "parameters", "parameters_mods.ini")
+        parfile = os.path.join(
+            azcam.db.datafolder, "parameters", "parameters_server_mods.ini"
+        )
         template = os.path.join(
             azcam.db.datafolder, "templates", "fits_template_mods.txt"
         )
