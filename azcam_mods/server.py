@@ -20,7 +20,7 @@ from azcam.tools.instrument import Instrument
 from azcam.tools.archon.controller_archon import ControllerArchon
 from azcam.tools.archon.exposure_archon import ExposureArchon
 from azcam.tools.archon.tempcon_archon import TempConArchon
-from azcam_mods.detector_mods import detector_mods_test_dewar, detector_mods
+from azcam_mods.detector_mods import detector_mods
 
 from azcam.web.fastapi_server import WebServer
 
@@ -51,6 +51,9 @@ def setup():
         remote_host = sys.argv[i + 1]
     except ValueError:
         remote_host = None
+
+    # for dev only
+    option = "testdewar"
 
     # define folders for system
     azcam.db.systemname = "MODS"
@@ -91,7 +94,7 @@ def setup():
         timingfile = os.path.join(
             azcam.db.datafolder,
             "archon",
-            "mods_testdewar_1.acf",
+            "mods_1.acf",
         )
         azcam.db.servermode = "MODS"
         cmdport = 2402
@@ -124,12 +127,11 @@ def setup():
     exposure = ExposureArchon()
     exposure.filetype = exposure.filetypes["MEF"]
     exposure.image.filetype = exposure.filetypes["MEF"]
-    # exposure.update_headers_in_background = 1
     exposure.display_image = 0
     exposure.add_extensions = 1
 
-    exposure.image.focalplane.gains = 4 * [2.9]
-    exposure.image.focalplane.rdnoises = 4 * [4.0]
+    exposure.image.focalplane.gains = 4 * [2.0]
+    exposure.image.focalplane.rdnoises = 4 * [2.0]
 
     if remote_host is None:
         pass
@@ -155,12 +157,6 @@ def setup():
     # display
     display = Ds9Display()
 
-    # system-specific
-    sc = 0.000125
-    exposure.image.focalplane.wcs.scale1 = 4 * [-1 * sc]
-    exposure.image.focalplane.wcs.scale2 = 4 * [-1 * sc]
-    exposure.image.focalplane.wcs.rot_deg = 4 * [90.0]
-
     # parameter file
     azcam.db.parameters.read_parfile(parfile)
     azcam.db.parameters.update_pars()
@@ -173,14 +169,15 @@ def setup():
     cmdserver.start()
 
     # web server
-    if 1:
+    if 0:
         webserver = WebServer()
         webserver.logcommands = 0
         webserver.port = 2403
         webserver.start()
 
     # azcammonitor
-    azcam.db.monitor.register()
+    if 0:
+        azcam.db.monitor.register()
 
     # finish
     azcam.log("Configuration complete")
