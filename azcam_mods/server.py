@@ -122,7 +122,6 @@ def setup():
     controller.verbosity = 2
 
     # tempcon
-
     tempcon = TempConArchon(description="MODS Archon")
     tempcon.temperature_ids = [0, 2]  # camtemp, dewtemp
     tempcon.heaterx_board = "MOD1"
