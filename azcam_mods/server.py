@@ -112,7 +112,7 @@ def setup():
     controller = ControllerArchon()
     controller.timing_file = timingfile
     controller.camserver.port = 4242
-    controller.camserver.host = "10.30.3.6"
+    controller.camserver.host = "10.0.0.2"
     controller.reset_flag = 0  # 0 for soft reset, 1 to upload code
     controller.verbosity = 2
 
