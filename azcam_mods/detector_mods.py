@@ -5,10 +5,10 @@ MODS focal plane
 detector_mods = {
     "name": "MODS",
     "description": "MODS",
-    "ref_pixel": [4096.0, 1536.0],
-    "format": [8192, 4, 0, 0, 3072, 8, 0, 0, 0],
+    "ref_pixel": [4144.0, 1544.0],
+    "format": [8288, 0, 0, 0, 3088, 0, 0, 0, 0],
     "focalplane": [1, 1, 2, 2, [0, 1, 0, 1]],
-    "roi": [1, 8192, 1, 3072, 1, 1],
+    "roi": [1, 8288, 1, 3088, 1, 1],
     "ext_position": [[1, 1], [2, 1], [1, 2], [2, 2]],
     "jpg_order": [1, 2, 3, 4],
     "ext_number": [1, 2, 3, 4],
@@ -27,9 +27,9 @@ detector_mods = {
     ],
     "amp_pixel_position": [
         [1, 1],
-        [8192, 1],
-        [1, 3072],
-        [3072, 1],
+        [8288, 1],
+        [1, 3088],
+        [8288, 3088],
     ],
     "ext_name": [
         "im1",
