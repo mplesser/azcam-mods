@@ -6,7 +6,7 @@ import subprocess
 
 OPTIONS = "-mods"
 # OPTIONS = "-testdewar"
-CMD = f"ipython --profile azcamserver -i -m azcam_mods.server -- {OPTIONS}"
+CMD = f"ipython --ipython-dir=~/data/ipython --profile azcamserver -i -m azcam_mods.server -- {OPTIONS}"
 
 p = subprocess.Popen(
     CMD,
