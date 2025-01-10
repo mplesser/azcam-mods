@@ -10,7 +10,7 @@ import sys
 import azcam
 import azcam.utils
 import azcam.exceptions
-import azcam.server
+from azcam.server import setup_server
 import azcam.shortcuts
 from azcam.cmdserver import CommandServer
 from azcam.header import System
@@ -53,6 +53,8 @@ def setup():
         remote_host = sys.argv[i + 1]
     except ValueError:
         remote_host = None
+
+    setup_server()
 
     # for dev only
     option = "testdewar"
@@ -171,7 +173,7 @@ def setup():
     cmdserver = CommandServer()
     cmdserver.port = cmdport
     azcam.log(f"Starting cmdserver - listening on port {cmdserver.port}")
-    azcam.db.tools["api"].initialize_api()
+    azcam.db.api.initialize()
     cmdserver.start()
 
     # web server
