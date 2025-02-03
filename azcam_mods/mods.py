@@ -21,6 +21,7 @@ class MODS(object):
 
         azcam.db.mods = self
         azcam.db.tools["mods"] = self
+        azcam.db.cli["mods"] = self
 
         return
 

@@ -153,17 +153,24 @@ def setup():
     telescope = Telescope()
 
     # system header template
-    system = System("MODS", template)
-    system.set_keyword("DETNAME", "MODS", "Detector name")
+    try:
+        system = System("MODS", template)
+        system.set_keyword("DETNAME", "MODS", "Detector name")
+    except Exception:
+        pass
 
     # detector
-
     exposure.set_detpars(detector_mods)
     exposure.fileconverter.set_detector_config(detector_mods)
 
     # display
     # display = Ds9Display()
     display = Display()
+
+    # MODS customized commands
+    from azcam_mods.mods import MODS
+
+    mods = MODS()
 
     # parameter file
     azcam.db.parameters.read_parfile(parfile)
