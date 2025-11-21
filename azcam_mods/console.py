@@ -27,7 +27,7 @@ def setup():
         datafolder = None
 
     # files and folders
-    azcam.db.systemname = "90prime"
+    azcam.db.systemname = "MODS"
 
     azcam.db.systemfolder = f"{os.path.dirname(__file__)}"
 
