@@ -1,5 +1,7 @@
 """
-AzCam environment for Bok 90prime facility CCD camera.
+AzCam environment for the LBT MODS CCD cameras
+
+Updated: 2025 July 10 [rwp/osu]
 """
 
 from importlib import metadata

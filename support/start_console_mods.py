@@ -4,7 +4,7 @@ Python process start file
 
 import subprocess
 
-OPTIONS = ""
+OPTIONS = "-mods2b"
 # CMD = f"ipython --ipython-dir=~/data/ipython --profile azcamconsole -i -m azcam_mods.console -- {OPTIONS}"
 CMD = f"ipython --ipython-dir=/data/ipython --profile azcamconsole -i -m azcam_mods.console -- {OPTIONS}"
 

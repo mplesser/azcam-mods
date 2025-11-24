@@ -1,12 +1,15 @@
 """
-MODS focal plane
+MODS focal plane configuration
+
+Updated: 2025 July 10 [rwp/osu]
+         changed im# -> Q# to match MODS nomenclature
 """
 
 detector_mods = {
     "name": "MODS",
     "description": "MODS",
     "ref_pixel": [4144.0, 1544.0],
-    "format": [8288, 0, 0, 0, 3088, 0, 0, 0, 0],
+    "format": [8288, 0, 0, 32, 3088, 0, 0, 0, 0],
     "focalplane": [1, 1, 2, 2, [0, 1, 0, 1]],
     "roi": [1, 8288, 1, 3088, 1, 1],
     "ext_position": [[1, 1], [2, 1], [1, 2], [2, 2]],
@@ -32,9 +35,9 @@ detector_mods = {
         [8288, 3088],
     ],
     "ext_name": [
-        "im1",
-        "im2",
-        "im3",
-        "im4",
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4",
     ],
 }
