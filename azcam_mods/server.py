@@ -112,6 +112,8 @@ def setup():
     azcamRoot = "/home/dts/azcam"
     
     os.environ["AZCAM_DATAROOT"] = datafolder
+
+    azcam.db.datafolder = datafolder
     
     # define folders for the system
 
@@ -163,7 +165,7 @@ def setup():
         
         parfile = os.path.join(azcam.db.systemfolder,
                                "parameters", 
-                               f"server_{option}.ini")
+                               f"parameters_server_{option}.ini")
         
         # "flight" archon configuration (aka "timing") files are 
         # named <modsID>.acf in system/<modsID>/archon/
@@ -232,10 +234,13 @@ def setup():
     # tempcon
     
     tempcon = TempConMODS(description="MODS Archon")
-    tempcon.temperature_ids = [0, 1]  # ccdtemp, basetemp
     tempcon.heaterx_board = "MOD10"
     tempcon.control_temperature = -100.0
     controller.heater_board_installed = 1
+    if option == "mods1r" or option == "mods1b":
+      tempcon.temperature_ids = [1, 0]  # basetemp, ccdtemp
+    else:
+      tempcon.temperature_ids = [0, 1]  # ccdtemp, basetemp
 
     # exposure
  

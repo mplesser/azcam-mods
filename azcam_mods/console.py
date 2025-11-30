@@ -18,7 +18,10 @@ import azcam_console.console
 from azcam_console.tools.console_tools import create_console_tools
 from azcam_console.testers import load_testers
 import azcam_console.shortcuts
+import azcam_console.tools.console_tools
 from azcam.tools.ds9display import Ds9Display
+
+# from azcam_console.tools.focus import FocusConsole
 
 
 def setup():
@@ -66,11 +69,18 @@ def setup():
     except ValueError:
         pass
 
+    try:
+        i = sys.argv.index("-lab")
+        option = "lab"
+    except ValueError:
+        pass
+
     # hardwire the MODS Archon data-taking system configuration
 
     azcamRoot = "/home/dts/azcam"
 
     os.environ["AZCAM_DATAROOT"] = datafolder
+    azcam.db.datafolder = datafolder
 
     # define folders for the system
 
@@ -109,9 +119,17 @@ def setup():
         parfile = os.path.join(
             azcam.db.systemfolder, "parameters", f"parameters_console_{option}.ini"
         )
+
     elif "test" in option:
         parfile = os.path.join(
             azcam.db.systemfolder, "parameters", "parameters_console_mods.ini"
+        )
+
+    elif "lab" in option:
+        azcam.db.datafolder = "/data/MODS"
+        azcam.db.systemfolder = "/azcam/azcam-mods/azcam_mods"
+        parfile = os.path.join(
+            azcam.db.datafolder, "parameters", "parameters_console_mods.ini"
         )
 
     # start logging
@@ -125,12 +143,13 @@ def setup():
     azcam.log(f"Configuring console for {azcam.db.systemname}")
 
     # display
-    if 0:
-        display = Ds9Display()
-        dthread = threading.Thread(target=display.initialize, args=[])
-        dthread.start()  # thread just for speed
+
+    # display = Ds9Display()
+    # dthread = threading.Thread(target=display.initialize, args=[])
+    # dthread.start()  # thread just for speed
 
     # console tools
+
     create_console_tools()
     load_testers()
 
@@ -153,10 +172,14 @@ def setup():
     azcam.db.parameters.read_parfile(parfile)
     azcam.db.parameters.update_pars()
 
-    # debug for Mike
+    # debug only
     azcam.db.tools["instrument"].is_enabled = 0
     azcam.db.tools["telescope"].is_enabled = 0
     azcam.db.imageroi = [[3500, 3550, 1200, 1250], [4150, 4159, 1200, 1250]]
+    gain = azcam.db.tools["gain"]
+    gain.create_report = 0
+    ptc = azcam.db.tools["ptc"]
+    ptc.create_report = 0
 
 
 # start
